@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-DE">
+    <head>
+        <!-- This HTML template has been created following a tutorial: 
+            https://webdesign.tutsplus.com/articles/build-an-html-email-template-from-scratch--webdesign-12770 -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Morning Brief</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style type="text/css">
+            /* If the screen size is 1080 wide or less, set the font-size to 25px */
+            @media (min-width: 20em) {{
+                :root {{
+                    font-size: calc(1rem + ((1vw - 0.2rem) * 3.75));
+                    min-height: 0vw;
+                }}
+            }}
+            @media (min-width: 40em) {{
+                :root {{
+                    font-size: 1.75em;
+                }}
+            }}
+            @media (prefers-color-scheme: dark){{
+                .header {{ 
+                    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAAD5Ip3+AAAADUlEQVQIHWNgVzX7DwAB+wFiZSni/QAAAABJRU5ErkJggg==);
+                    text-align: center;
+                    color: white!important;
+                    
+                }}
+                .content {{
+                    /*background-color: #FFFFFF !important;*/
+                    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAAD5Ip3+AAAAC0lEQVQIHWP4DwQACfsD/Qy7W+cAAAAASUVORK5CYII=);
+                    border-radius: 8px;
+                    color: #000000;
+                    
+                }}
+                .foot {{
+                    background-color: #000000 !important;
+                }}
+                .backbone {{
+                    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAAD5Ip3+AAAADUlEQVQIHWN4+vTpfwAJEQOvv/YgwwAAAABJRU5ErkJggg==);
+                }}
+            }}
+            @media (prefers-color-scheme: light){{
+                .header {{ 
+                    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAAD5Ip3+AAAADUlEQVQIHWNgVzX7DwAB+wFiZSni/QAAAABJRU5ErkJggg==);
+                    text-align: center;
+                    color: white!important;
+                    
+                }}
+                .content {{
+                    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAAD5Ip3+AAAAC0lEQVQIHWP4DwQACfsD/Qy7W+cAAAAASUVORK5CYII=);
+                    border-radius: 8px;
+                    color: #000000;
+                    
+                }}
+                .foot {{
+                    background-color: #000000;
+                    color: white;
+                }}
+                .backbone {{
+                    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAAD5Ip3+AAAADUlEQVQIHWN4+vTpfwAJEQOvv/YgwwAAAABJRU5ErkJggg==);
+                }}
+            }}
+        </style>
+    </head>
+    <body style="margin: 0; padding: 0; font-family:Helvetica, Arial, sans-serif;">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="670px" style="border-collapse: collapse;">
+                <tr>
+                    <td class="header" style="padding: 30px 0 30px 0;">
+                        <h1>"Brewing. Drinking. Briefing."</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="backbone" style="padding: 0;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: seperate; border-spacing: 15px; line-height: 150%;">
+                            <tr>
+                                <td bgcolor="transparent" align="center">
+                                {tagesschau}                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content" style="padding:2% 2% 5% 2%;">
+                                	{wotd}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content" style="max-width:100%;height:auto; padding: 2% 0 5% 0;" align="center">
+                                {wholesome}
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="foot" align="center" style="padding: 30px 0 30px 0;">
+                        <h3>Created by <a href="https://github.com/sharasivam/morningbrief" style="text-decoration: none; color:white">sharasivam</a></h3>
+                    </td>
+                </tr>
+            </table>
+        </table>
+    </body>
+</html>
