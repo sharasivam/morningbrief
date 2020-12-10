@@ -12,6 +12,7 @@ In short, brew a cup of coffee, drink and get briefed.
 import re # pattern finding
 import smtplib, ssl # email server connection
 import time # for delay
+import holidays # for trigger
 
 from bs4 import BeautifulSoup # web scraping
 from urllib.request import Request, urlopen # opening URL
@@ -45,6 +46,7 @@ greeting_list = [ # list of greetings to choose from for the email subject
     "Good day to you.",
     # ATTENTION, GREETINGS COPIED FROM https://tosaylib.com/different-ways-to-say-good-morning/
 ]
+de_holidays = holidays.CountryHoliday('DE', prov='BW', state=None) # all holidays from Baden-Wuerttemberg
 
 # <----------all HTML related functions---------->
 # function to get the source code of an url
@@ -137,9 +139,9 @@ content = { # dict containing todays news content ready for HTML
 # ATTENTION: THIS CODE IS COPIED AND MODIFIED FROM https://realpython.com/python-send-email/
 def sendmail():
     # login details and receiver email
-    sender_email = input("What's your gmail?")
-    receiver_email = input("Who should receive it?")
-    password = input("What is your password?")
+    sender_email = "sender@email.com"
+    receiver_email = "receiver@email.com"
+    password = "emailclient"
     # message details
     message = MIMEMultipart("alternative")
     message["Subject"] =  datetime.now().strftime("%d.%m.%Y") + " - " + choice(greeting_list)
@@ -149,7 +151,7 @@ def sendmail():
     # create HTML body and plain text alternative
     text = """\
     Hi,
-    if you can't see the content of this email properly, please let me know at wds20a@sharasivam.de
+    if you can't see the content of this email properly, please let me know at sender@email.com
     Thanks!
     """
     html = open("archive/" + filename + ".html").read() # open created HTML file
@@ -163,7 +165,7 @@ def sendmail():
     message.attach(part2)
 
     # create secure connection with server and send email
-    session = smtplib.SMTP('smtp.gmail.com', 587) # using strato port in this case
+    session = smtplib.SMTP('smtp.strato.de', 587) # using strato port in this case
     session.starttls() # enable secure connection
     session.login(sender_email, password) # login with sender_email and password
     text = message.as_string() # translate message into string
@@ -171,5 +173,8 @@ def sendmail():
     session.quit() # quit started session
     print("Mail sent!")
 
-createHTML() # create todays HTML file
-sendmail() # send todays briefing using the created HTML file as email body
+if datetime.now() not in de_holidays: # only send out newsletter if today is not a holiday
+    createHTML() # create todays HTML file
+    sendmail() # send todays briefing using the created HTML file as email body
+else:
+    print("Have a nice holiday!")
